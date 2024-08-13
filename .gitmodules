@@ -1,0 +1,6 @@
+[submodule "talon/community"]
+	path = talon/user/community
+	url = https://github.com/talonhub/community
+[submodule "talon/user/rango-talon"]
+	path = talon/user/rango-talon
+	url = https://github.com/david-tejada/rango-talon

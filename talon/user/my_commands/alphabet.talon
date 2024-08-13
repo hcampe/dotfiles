@@ -1,0 +1,7 @@
+ace: key(a)
+cat: key(c)
+day: key(d)
+hot: key(h)
+like: key(l)
+oil: key(o)
+under: key(u)
