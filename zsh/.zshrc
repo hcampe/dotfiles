@@ -77,6 +77,7 @@ plugins=(
     screen
 #    zsh-autosuggestions
     dirhistory
+    git fzf # search history
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -98,6 +99,27 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+### HISTORY, cf https://martinheinz.dev/blog/110
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
+
+setopt EXTENDED_HISTORY      # Write the history file in the ':start:elapsed;command' format.
+setopt INC_APPEND_HISTORY    # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY         # Share history between all sessions.
+setopt HIST_IGNORE_DUPS      # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS  # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_IGNORE_SPACE     # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS     # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY           # Do not execute immediately upon history expansion.
+setopt APPEND_HISTORY        # append to history file (Default)
+setopt HIST_NO_STORE         # Don't store history commands
+setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line being added to the history.
+
+
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -108,14 +130,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="nvim"
 alias o="xdg-open"
-alias wttr="clear && curl wttr.in"
-alias dipp="\
-    cd ~/cloud/uni/dipp/ &&\
-    o course/modern_ml.pdf &&\
-    cd exercises &&\
-    conda activate dipp &&\
-    jupyter-notebook"
+alias nerd-dictation="/home/tjolesch/micromamba/envs/nerddict/bin/python /home/tjolesch/bin/nerd-dictation/nerd-dictation"
+alias ndde="nerd-dictation begin --vosk-model-dir=/home/tjolesch/bin/nerd-dictation/models/vosk-model-de-tuda-0.6-900k &"
+alias nden="nerd-dictation begin --vosk-model-dir=/home/tjolesch/bin/nerd-dictation/models/vosk-model-en-us-0.42-gigaspeech &"
+alias nds="nerd-dictation suspend"
+alias ndx="nerd-dictation end"
+alias gpustat-web="ssh -fN -L 6019:localhost:6019 hcampe@quadopt1.iwr.uni-heidelberg.de && firefox localhost:6019 &"
+alias tensorboard="ssh -N -f -L localhost:16006:localhost:6006 hcampe@quadopt1.iwr.uni-heidelberg.de && firefox localhost:16006 &"
 
+
+export FZF_CTRL_R_OPTS='--reverse'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
