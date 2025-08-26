@@ -4,3 +4,9 @@
 [submodule "talon/user/rango-talon"]
 	path = talon/user/rango-talon
 	url = https://github.com/david-tejada/rango-talon
+[submodule "talon/user/cursorless"]
+	path = talon/user/cursorless
+	url = https://github.com/cursorless-dev/cursorless
+[submodule "talon/user/cursorless-talon"]
+	path = talon/user/cursorless-talon
+	url = https://github.com/cursorless-dev/cursorless-talon.git
